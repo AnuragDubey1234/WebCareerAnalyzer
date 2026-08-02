@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personalized Web Career Interest Analyzer</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f0f8ff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    margin:0;
+}
+
+.container{
+    width:400px;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+h2{
+    text-align:center;
+    color:#0077cc;
+}
+
+input,select{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+button{
+    width:100%;
+    padding:10px;
+    background:#0077cc;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    background:#005fa3;
+}
+
+#result{
+    margin-top:20px;
+    background:#eef7ff;
+    padding:15px;
+    border-radius:8px;
+    display:none;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h2>🎯 Personalized Web Career Interest Analyzer</h2>
+
+<input type="text" id="name" placeholder="Enter Name">
+
+<input type="number" id="age" placeholder="Enter Age">
+
+<select id="education">
+    <option value="">Select Education</option>
+    <option>B.Tech</option>
+    <option>BCA</option>
+    <option>B.Sc</option>
+    <option>B.Com</option>
+</select>
+
+<select id="interest">
+    <option value="">Select Interest</option>
+    <option value="coding">Coding</option>
+    <option value="design">Design</option>
+    <option value="business">Business</option>
+    <option value="data">Data Analysis</option>
+</select>
+
+<select id="skill">
+    <option value="">Select Strong Skill</option>
+    <option value="problem">Problem Solving</option>
+    <option value="creative">Creativity</option>
+    <option value="communication">Communication</option>
+    <option value="math">Mathematics</option>
+</select>
+
+<button onclick="analyzeCareer()">Analyze Career</button>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+function analyzeCareer(){
+
+let name=document.getElementById("name").value;
+let age=document.getElementById("age").value;
+let education=document.getElementById("education").value;
+let interest=document.getElementById("interest").value;
+let skill=document.getElementById("skill").value;
+
+if(name==""||age==""||education==""||interest==""||skill==""){
+    alert("Please fill all fields.");
+    return;
+}
+
+let career="";
+let score=0;
+
+if(interest=="coding" && skill=="problem"){
+    career="👨‍💻 Software Engineer";
+    score=95;
+}
+else if(interest=="coding" && skill=="math"){
+    career="🤖 AI / ML Engineer";
+    score=92;
+}
+else if(interest=="data" && skill=="math"){
+    career="📊 Data Analyst";
+    score=90;
+}
+else if(interest=="design" && skill=="creative"){
+    career="🎨 UI/UX Designer";
+    score=88;
+}
+else if(interest=="business" && skill=="communication"){
+    career="📈 Business Analyst";
+    score=90;
+}
+else{
+    career="🌟 Explore Different Career Options";
+    score=75;
+}
+
+document.getElementById("result").style.display="block";
+
+document.getElementById("result").innerHTML=
+"<h3>Hello "+name+" 👋</h3>"+
+"<p><b>Age:</b> "+age+"</p>"+
+"<p><b>Education:</b> "+education+"</p>"+
+"<p><b>Interest:</b> "+interest+"</p>"+
+"<p><b>Strong Skill:</b> "+skill+"</p>"+
+"<hr>"+
+"<h3>Recommended Career</h3>"+
+"<h2>"+career+"</h2>"+
+"<p><b>Career Match Score:</b> "+score+"%</p>";
+
+}
+
+</script>
+
+</body>
+</html>
